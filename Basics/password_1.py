@@ -1,6 +1,6 @@
 # Simple program to verify a password
 password = 'password'
-
+tries = 0
 print ('Hello, welcome to this app')
 print ()
 print ('-'*10)
