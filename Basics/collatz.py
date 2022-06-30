@@ -1,5 +1,5 @@
 # Program to perform the Collatz Sequence on any integer
-
+import sys
 def collatz(number):
 
     if (number % 2 == 0): # Check if number is even
@@ -12,8 +12,14 @@ def collatz(number):
 # User Interaction
 
 print ('Enter a number')
-numberInput = int(input())
+try:
+    numberInput = int(input())
+    while numberInput != 1:
+        numberInput = collatz(numberInput)
+except ValueError:
+    print ('Please enter an integer!')
+    sys.exit()
 
-while numberInput != 1:
-    numberInput = collatz(numberInput)
+
+
 
