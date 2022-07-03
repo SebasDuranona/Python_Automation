@@ -28,6 +28,26 @@ for k, v in stuff.items():
     print(str(v) + ' ' + k)
 print('Number of items: ' + str(itemNum))
 
+def addToInventory(inventory, addedItems): # Function to add items to an already created inventory.
+    # NOTE: Eventually will need to update the character inventory file
+    if type(addedItems) == list:
+        for i in range(len(addedItems)):
+            if addedItems[i] not in inventory.keys():
+                inventory.setdefault(addedItems[i], 1)
+            else:
+                inventory[addedItems[i]] = inventory[addedItems[i]] + 1
+    else:
+        if addedItems not in inventory.keys():
+            inventory.setdefault(addedItems, 1)
+        else:
+            inventory[addedItems] = inventory[addedItems] + 1
+
+testList = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
+addToInventory(stuff, testList)
+print(stuff)
+testValue = 'gold coin'
+addToInventory(stuff, testValue)
+print(stuff)
 #f = open(r'inventories/test.txt', 'a+')
 #print('Enter Something')
 #something = input()
