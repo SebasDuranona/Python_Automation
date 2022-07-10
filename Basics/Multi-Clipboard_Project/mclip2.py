@@ -13,10 +13,20 @@ import shelve, pyperclip, sys
 
 mclipShelf = shelve.open('mclip')
 
+# Function to delete a keyword entry
+def delete(saved, item):
+    if item in saved:
+        del saved[item]
+        print (item + ' was deleted.')
+    else:
+        print('Keyword ' + item + ' was not found')
+
 # Save Clipboard content.
 
 if len(sys.argv) == 3 and sys.argv[1].lower() == 'save':
     mclipShelf[sys.argv[2]] = pyperclip.paste()
+elif len(sys.argv) == 3 and sys.argv[1].lower() == 'delete':
+    delete(mclipShelf, sys.argv[2])
 elif len(sys.argv) == 2:
 
     # List keywords and load content.
@@ -27,3 +37,4 @@ elif len(sys.argv) == 2:
         pyperclip.copy(mclipShelf[sys.argv[1]])
 
 mclipShelf.close()
+
